@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <input placeholder="Adicionar tarefa">
+    <button onclick="listaTarefas();">Adicionar</button>
+    <div class="js-tarefas"></div>
+
+
+    <script>
+        var lista = [];
+        
+        carregarLista();
+
+        function carregarLista () {
+            let fazerHTML = '';
+            for (let i = 0; i < lista.length; i++) {
+                const fazer = lista[i];
+                const html = `<p>${fazer}</p>`;
+                fazerHTML += html;
+            }
+            console.log(fazerHTML);
+            document.querySelector('.js-tarefas').innerHTML = fazerHTML;
+        }
+
+        function listaTarefas () {
+            const tarefa = document.querySelector('input').value;
+            lista.push(tarefa);
+            document.querySelector('input').value = '';
+            carregarLista();
+        }
+    </script>
+</body>
+</html>
